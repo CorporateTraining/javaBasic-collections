@@ -30,17 +30,21 @@ class DistinctIterator<E> implements Iterator<E> {
     private final Iterator<E> iterator;
 
     DistinctIterator(Iterator<E> iterator) {
-        this.iterator = iterator;
+        Set<E> list = new HashSet<>();
+        while (iterator.hasNext()){
+            list.add(iterator.next());
+        }
+        this.iterator = list.iterator();
     }
 
     @Override
     public boolean hasNext() {
-        throw new NotImplementedException();
+        return iterator.hasNext();
     }
 
     @Override
     public E next() {
-        throw new NotImplementedException();
+        return iterator.next();
     }
     // --end->
 }
